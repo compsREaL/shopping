@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/components.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/login.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="content">
+    <h2 class="form-title">用户权限不足</h2>
+    <h3 class="form-title" id="timeContainer"/>
+</div>
+
+</body>
+<script>
+    onload = function () {
+        setInterval(go,1000)
+    }
+
+    var x=4;
+    function go() {
+        x--;
+        if (x>0){
+            $("#timeContainer").html(x);
+        }else {
+            window.location.href="list.html";
+        }
+    }
+    
+</script>
+</html>

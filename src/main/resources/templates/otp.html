@@ -1,0 +1,63 @@
+html>
+<head>
+<meta charset="UTF-8">
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/components.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/login.css" rel="stylesheet" type="text/css"/>
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body class="login">
+	<div class="content">
+		<h3 class="form-title">获取otp信息</h3>
+		<div class="form-group">
+			<label class="control-label">请填写您的手机号！</label>
+			<div>
+				<input class="form-control" type="text" placeholder="手机号" name="telephone" id="telephone" />
+			</div>
+		</div>
+		<div class="form-actions">
+			<button class="btn blue" id="getotp" type="submit">获取短信验证码</button>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	jQuery(document).ready(function(){
+	
+		//绑定otp的click事件用于向后端发送获取手机验证码的请求
+		$("#getotp").on("click",function(){
+			var telephone = $("#telephone").val();
+			if(telephone == null || telephone == "" || isNaN(telephone)){
+				alert("请填写正确格式的手机号码！");
+				return false;
+			}
+			$.ajax({
+				type:"POST",
+				contentType:"application/x-www-form-urlencoded",
+				url:"http://localhost:8090/user/otp",
+				data:{
+					"telephone":$("#telephone").val(),
+				},
+				xhrFields:{withCredentials:true},			//允许跨域受信的请求，以使其session变成跨域可授信
+				success:function(data){
+					if(data.status == "success"){
+						alert("OTP已经发送到您的手机上，请注意查收");
+						window.location.href="register.html";
+					}else{
+						alert("OTP发送失败，原因为"+data.data.errMsg);
+					}
+				},
+				error:function(data){
+					alert("OTP发送失败，原因为"+data.responseText);
+				}
+			})
+			return false;
+		});
+	});
+</script>
+
+
+
+</html>

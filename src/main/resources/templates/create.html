@@ -1,0 +1,124 @@
+<html>
+<head>
+<meta charset="UTF-8">
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/components.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/login.css" rel="stylesheet" type="text/css"/>
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body class="login">
+	<div class="content">
+		<h3 class="form-title">创建商品</h3>
+		<div class=""form-group>
+			<label class="control-label">商品名</label>
+			<div>
+				<input class="form-control" type="text"  name="title" id="title" />
+			</div>
+		</div>
+		<div class=""form-group>
+			<label class="control-label">商品描述</label>
+			<div>
+				<input class="form-control" type="text"  name="description" id="description" />
+			</div>
+		</div>
+		<div class=""form-group>
+			<label class="control-label">价格</label>
+			<div>
+				<input class="form-control" type="text"  name="price" id="price" />
+			</div>
+		</div>
+		<div class=""form-group>
+			<label class="control-label">图片</label>
+			<div>
+				<input class="form-control" type="text"  name="imgUrl" id="imgUrl" />
+			</div>
+		</div>
+		<div class=""form-group>
+			<label class="control-label">库存</label>
+			<div>
+				<input class="form-control" type="text"  name="stock" id="stock" />
+			</div>
+		</div>
+		<div class="form-actions">
+			<button class="btn blue" id="create" type="submit">提交创建</button>
+		</div>
+		<div class="form-actions">
+			<button class="btn red" id="home" type="submit">返回首页</button>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	jQuery(document).ready(function(){
+
+		$("#home").on("click",function () {
+			window.location.href="list.html";
+		})
+	
+		//绑定otp的click事件用于向后端发送获取手机验证码的请求
+		$("#create").on("click",function(){
+			var title = $("#title").val();
+			var description = $("#description").val();
+			var price = $("#price").val();
+			var imgUrl = $("#imgUrl").val();
+			var stock = $("#stock").val();
+			
+			if(title == null || title == ""){
+				alert("商品名称不能为空");
+				return false;
+			}
+			if(description == null || description == ""){
+				alert("商品描述信息不能为空");
+				return false;
+			}
+			if(price == null || price == ""){
+				alert("商品价格不能为空");
+				return false;
+			}
+			if(isNaN(price)){
+				alert("请填写正确的数字");
+				return false;
+			}
+			if(imgUrl == null || imgUrl == ""){
+				alert("图片链接地址不能为空");
+				return false;
+			}
+			if(stock == null || stock == ""){
+				alert("库存量不能为空");
+				return false;
+			}
+			
+			$.ajax({
+				type:"POST",
+				contentType:"application/x-www-form-urlencoded",
+				url:"http://localhost:8090/item/create",
+				data:{
+					"title":title,
+					"description":description,
+					"price":price,
+					"imgUrl":imgUrl,
+					"stock":stock
+				},
+				xhrFields:{withCredentials:true},
+				success:function(data){
+					if(data.status == "success"){
+						alert("创建成功");
+					}else{
+						alert("创建失败，原因为"+data.data.errMsg);
+						window.location.href="login.html";
+					}
+				},
+				error:function(data){
+					alert("商品创建失败，原因为"+data.responseText);
+				}
+			})
+			return false;
+		});
+	});
+</script>
+
+
+
+</html>

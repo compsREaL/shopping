@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOGGER"
+        "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss}(%F:%L)[%-5p] %m%n" />
+        </layout>
+    </appender>
+    <!-- 文件输出 -->
+    <appender name="R" class="org.apache.log4j.FileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss}(%F:%L)[%-5p] %m%n" />
+            <param name="File" value="info.log"/>
+        </layout>
+    </appender>
+    <!-- 设置日志输出级别 -->
+    <category name="java.sql">
+        <priority value="debug" />
+    </category>
+    <category name="com.ibatis">
+        <priority value="debug" />
+    </category>
+    <category name="com.real.shopping">
+        <priority value="debug" />
+    </category>
+    <root>
+        <priority value="error" />
+        <appender-ref ref="stdout" />
+    </root>
+</log4j:configuration>
