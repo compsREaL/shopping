@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 09/04/2019 14:44:45
+ Date: 09/04/2019 17:17:22
 */
 
 SET NAMES utf8mb4;
@@ -34,10 +34,10 @@ CREATE TABLE `item_info`  (
 -- ----------------------------
 -- Records of item_info
 -- ----------------------------
-INSERT INTO `item_info` VALUES (3, 'iphone Xs Max', 9999.00, '分辨率：2688*1242，后置摄像头：双1200万像素，前置摄像头：700万像素', 9, 'https://img12.360buyimg.com/n7/jfs/t1/4528/10/3590/153299/5b997bf5E4a513949/45ab3dd6c35d981b.jpg');
+INSERT INTO `item_info` VALUES (3, 'iphone Xs Max', 9999.00, '分辨率：2688*1242，后置摄像头：双1200万像素，前置摄像头：700万像素', 12, 'https://img12.360buyimg.com/n7/jfs/t1/4528/10/3590/153299/5b997bf5E4a513949/45ab3dd6c35d981b.jpg');
 INSERT INTO `item_info` VALUES (5, '小米9', 3299.00, '新品三摄 8GB+128GB全息幻彩蓝 骁龙855 全网通4G 双卡双待 水滴全面屏拍照游戏智能手机', 15, 'https://img10.360buyimg.com/n7/jfs/t1/30858/32/2918/209997/5c6fcc52Ed2f6e122/d05ed0ce052a5a0c.jpg');
 INSERT INTO `item_info` VALUES (6, 'Java从入门到精通', 67.00, '循序渐进，实战讲述：基础知识→核心技术→高级应用→项目实战，符合认知规律。', 0, 'http://img3m1.ddimg.cn/29/32/26912981-1_b_4.jpg');
-INSERT INTO `item_info` VALUES (7, '疯狂Java讲义', 106.64, '《疯狂Java讲义》历时十年沉淀，现已升级到第4版，经过无数Java学习者的反复验证，被包括北京大学在内的大量985、211高校的优秀教师引荐为参考资料、选作教材。', 0, 'http://img3m9.ddimg.cn/12/17/23532609-1_l_4.jpg');
+INSERT INTO `item_info` VALUES (7, '疯狂Java讲义', 106.64, '《疯狂Java讲义》历时十年沉淀，现已升级到第4版，经过无数Java学习者的反复验证，被包括北京大学在内的大量985、211高校的优秀教师引荐为参考资料、选作教材。', 3, 'http://img3m9.ddimg.cn/12/17/23532609-1_l_4.jpg');
 
 -- ----------------------------
 -- Table structure for item_stock
@@ -53,10 +53,10 @@ CREATE TABLE `item_stock`  (
 -- ----------------------------
 -- Records of item_stock
 -- ----------------------------
-INSERT INTO `item_stock` VALUES (3, 3, 191);
+INSERT INTO `item_stock` VALUES (3, 3, 188);
 INSERT INTO `item_stock` VALUES (4, 5, 285);
 INSERT INTO `item_stock` VALUES (5, 6, 200);
-INSERT INTO `item_stock` VALUES (6, 7, 50);
+INSERT INTO `item_stock` VALUES (6, 7, 47);
 
 -- ----------------------------
 -- Table structure for order_info
@@ -83,9 +83,9 @@ INSERT INTO `order_info` VALUES ('2019040800000300', 1, 5, 3299.00, 2, 6598.00, 
 INSERT INTO `order_info` VALUES ('2019040800000400', 1, 5, 3299.00, 1, 3299.00, 0);
 INSERT INTO `order_info` VALUES ('2019040800000500', 1, 5, 3299.00, 4, 13196.00, 0);
 INSERT INTO `order_info` VALUES ('2019040800000600', 1, 5, 3299.00, 5, 16495.00, 0);
-INSERT INTO `order_info` VALUES ('2019040800000700', 1, 3, 8999.00, 1, 9999.00, 3);
-INSERT INTO `order_info` VALUES ('2019040800000800', 1, 3, 8999.00, 1, 9999.00, 3);
-INSERT INTO `order_info` VALUES ('2019040800000900', 1, 3, 8999.00, 1, 9999.00, 3);
+INSERT INTO `order_info` VALUES ('2019040900001000', 1, 7, 106.64, 3, 319.92, 0);
+INSERT INTO `order_info` VALUES ('2019040900001100', 1, 3, 9999.00, 2, 19998.00, 0);
+INSERT INTO `order_info` VALUES ('2019040900001200', 1, 3, 8999.00, 1, 8999.00, 3);
 
 -- ----------------------------
 -- Table structure for promo_info
@@ -104,7 +104,7 @@ CREATE TABLE `promo_info`  (
 -- ----------------------------
 -- Records of promo_info
 -- ----------------------------
-INSERT INTO `promo_info` VALUES (1, 'iphone Xs max促销', '2019-04-08 21:00:00', '2019-04-08 22:00:00', 3, 8999.00);
+INSERT INTO `promo_info` VALUES (1, 'iphone Xs max促销', '2019-04-09 17:00:00', '2019-04-09 22:00:00', 3, 8999.00);
 
 -- ----------------------------
 -- Table structure for sequence_info
@@ -120,7 +120,7 @@ CREATE TABLE `sequence_info`  (
 -- ----------------------------
 -- Records of sequence_info
 -- ----------------------------
-INSERT INTO `sequence_info` VALUES ('order_info', 10, 1);
+INSERT INTO `sequence_info` VALUES ('order_info', 13, 1);
 
 -- ----------------------------
 -- Table structure for user_info
@@ -168,7 +168,7 @@ CREATE TABLE `user_roles`  (
   `user_id` int(11) NOT NULL DEFAULT 0,
   `role_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'customer',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_roles

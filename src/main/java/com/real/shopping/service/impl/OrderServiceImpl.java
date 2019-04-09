@@ -65,18 +65,21 @@ public class OrderServiceImpl implements OrderService {
             }
         }
 
+
         //生成订单
         OrderModel orderModel = new OrderModel();
         orderModel.setUserId(userId);
         orderModel.setItemId(itemId);
+        BigDecimal orderPrice = null;
         if (promoId != null) {
             orderModel.setPrice(itemModel.getPromoModel().getPromoItemPrice());
+            orderPrice = itemModel.getPromoModel().getPromoItemPrice().multiply(new BigDecimal((amount)));
         }else {
             orderModel.setPrice(itemModel.getPrice());
+            orderPrice = itemModel.getPrice().multiply(new BigDecimal(amount));
         }
         orderModel.setPromoId(promoId);
         orderModel.setAmount(amount);
-        BigDecimal orderPrice = itemModel.getPrice().multiply(new BigDecimal(amount));
         orderModel.setOrderPrice(orderPrice);
         //生成订单号
         orderModel.setId(generateOrderNum());
