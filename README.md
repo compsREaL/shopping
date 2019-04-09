@@ -3,8 +3,9 @@
 后端技术：
 
 	框架使用：Spring，SpringMVC，Mybatis;
+	数据库：Mysql
 	数据库连接池：Alibaba Druid;
-	缓存框架：redis;
+	缓存管理：Redis;
 	日志管理：Slf4j，log4j;
 	使用mybatis-generator插件自动生成对应DataObject，Dao以及mapper映射文件。
 前端技术：
